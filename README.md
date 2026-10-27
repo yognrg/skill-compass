@@ -60,6 +60,30 @@ To skip the menu and pick the agent yourself, add `-a`, for example `-a claude-c
 
 > This uses the open [`skills`](https://github.com/vercel-labs/skills) installer, which downloads straight from GitHub. You do not need an npm account or a published package.
 
+### Using a tool other than Claude Code?
+
+The same command works for many agents. Add `-a` followed by your agent's name to install straight into it:
+
+| Tool | Command |
+| --- | --- |
+| Codex | `npx skills add yognrg/skill-compass -a codex` |
+| Cursor | `npx skills add yognrg/skill-compass -a cursor` |
+| Gemini CLI | `npx skills add yognrg/skill-compass -a gemini-cli` |
+| GitHub Copilot | `npx skills add yognrg/skill-compass -a github-copilot` |
+| Windsurf | `npx skills add yognrg/skill-compass -a windsurf` |
+| OpenCode | `npx skills add yognrg/skill-compass -a opencode` |
+| Cline | `npx skills add yognrg/skill-compass -a cline` |
+| Roo Code | `npx skills add yognrg/skill-compass -a roo` |
+| Goose | `npx skills add yognrg/skill-compass -a goose` |
+| Amp | `npx skills add yognrg/skill-compass -a amp` |
+
+More are supported, including Continue, Kiro, Junie, Trae, Zed, Warp, Replit, Augment, Qwen Code and OpenHands. Run the command without `-a` to see the full menu, or install into several at once with `-a codex -a cursor`.
+
+Two things to know:
+
+* **The pick list looks different.** Claude shows a tick box popup. Other tools have no popup, so Skill Compass prints a numbered list and you reply with the numbers you want, like `1 3`.
+* **Your tool must read `SKILL.md` skills.** The installer puts the folder in the right place, but a tool that does not load skills will not use it. Check your tool's docs if nothing happens.
+
 ### Other ways to install
 
 Open the one that matches how you work.
