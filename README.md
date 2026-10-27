@@ -38,74 +38,91 @@ You pick 1, 3 and 4. Compass loads them in order and gets to work.
 
 ## Install
 
-Pick the tool you use. Every method installs the same skill.
+### The easy way: one command
 
-### Claude Code
+You need [Node.js](https://nodejs.org) 22.20 or newer. Then run this in your terminal:
 
-**Option A: plugin (easiest, updates with one command)**
+```bash
+npx skills add yognrg/skill-compass
+```
 
-Inside Claude Code, run:
+1. It asks which agents to install into. Pick yours (Claude Code, Codex, Cursor and many others are supported).
+2. It copies Skill Compass into that agent's skills folder.
+3. Restart your agent, then say **"skill compass"** in any chat.
+
+Want it in every project instead of just the current one? Add `-g`:
+
+```bash
+npx skills add yognrg/skill-compass -g
+```
+
+To skip the menu and pick the agent yourself, add `-a`, for example `-a claude-code`.
+
+> This uses the open [`skills`](https://github.com/vercel-labs/skills) installer, which downloads straight from GitHub. You do not need an npm account or a published package.
+
+### Other ways to install
+
+Open the one that matches how you work.
+
+<details>
+<summary><strong>Claude Code plugin</strong> (two commands, inside Claude Code)</summary>
+
+<br>
 
 ```
 /plugin marketplace add yognrg/skill-compass
 /plugin install skill-compass@skill-compass
 ```
 
-**Option B: copy the folder (personal, works in all your projects)**
+Then type `/skill-compass`.
 
-```bash
-git clone https://github.com/yognrg/skill-compass.git
-cd skill-compass
-./install.sh
-```
+</details>
 
-Or by hand:
+<details>
+<summary><strong>Claude.ai or Claude Desktop</strong> (upload a zip)</summary>
 
-```bash
-mkdir -p ~/.claude/skills
-cp -R skills/skill-compass ~/.claude/skills/
-```
+<br>
 
-**Option C: one project only (share it with your team through git)**
-
-```bash
-./install.sh --project
-```
-
-This copies the skill to `.claude/skills/skill-compass` in your current project. Commit it and your teammates get it too.
-
-Restart your session, then type `/skill-compass`.
-
-### Claude.ai and Claude Desktop
-
-1. Build the zip: `./scripts/package.sh` (or download `skill-compass.zip` from the Releases page).
-2. Open **Settings**, go to **Capabilities**, then **Skills**.
-3. Choose **Upload skill** and select `skill-compass.zip`.
+1. Download `skill-compass.zip` from the [Releases page](https://github.com/yognrg/skill-compass/releases), or build it yourself with `./scripts/package.sh`.
+2. Open **Settings**, then **Capabilities**, then **Skills**.
+3. Choose **Upload skill** and pick the zip.
 4. Turn it on, then say "skill compass" in any chat.
 
-The exact menu names can change between app versions. If you do not see them, search the app's help for "upload a skill".
+Menu names can change between app versions. If you cannot find them, search the app's help for "upload a skill".
 
-### Codex
+</details>
+
+<details>
+<summary><strong>Copy it by hand</strong> (no Node.js needed)</summary>
+
+<br>
+
+Download or clone this repo, then copy the `skills/skill-compass` folder into your agent's skills folder:
+
+| Agent | Everywhere (all projects) | This project only |
+| --- | --- | --- |
+| Claude Code | `~/.claude/skills/` | `.claude/skills/` |
+| Codex | `~/.agents/skills/` | `.agents/skills/` |
+| Other agents | The skills folder in your agent's docs | Same, inside your project |
+
+Or let the included script do the copy:
 
 ```bash
 git clone https://github.com/yognrg/skill-compass.git
 cd skill-compass
-./install.sh --codex
+./install.sh            # Claude Code, all projects
+./install.sh --codex    # Codex, all projects
+./install.sh --project  # Claude Code, this project only
+./install.sh --dir PATH # any skills folder you choose
 ```
 
-This copies the skill to `~/.agents/skills/skill-compass`. For one project only, copy `skills/skill-compass` into `.agents/skills/` inside that project. Restart Codex and ask for "skill compass".
+Restart your agent and say "skill compass".
 
-Codex has no multiple choice popup, so Skill Compass prints a numbered list instead. Reply with the numbers you want.
+</details>
 
-### Any other agent that supports SKILL.md
+### Check that it worked
 
-Many coding agents read the same `SKILL.md` format. Copy the folder into the skills directory your agent documents:
-
-```bash
-./install.sh --dir /path/to/your/agent/skills
-```
-
-Then ask your agent to use "skill compass". If the agent has no popup tool, you get the numbered list.
+Start a new chat and type `/skill-compass` or "which skills should I use for this?". You should see a short list of your installed skills to pick from. If not, restart the agent once and try again.
 
 ---
 
@@ -146,14 +163,13 @@ Compass finds your skills in this order: the skill list the agent already shows,
 
 ## Update and uninstall
 
-**Update:** pull the latest version and run the installer again. It replaces the old copy.
+**Update:** run the same install command again to get the latest version.
 
 ```bash
-git pull
-./install.sh
+npx skills add yognrg/skill-compass
 ```
 
-Plugin users run `/plugin marketplace update skill-compass`.
+Installed by hand? Run `git pull` and then `./install.sh` again. Plugin users run `/plugin marketplace update skill-compass`.
 
 **Uninstall:** delete the folder.
 
@@ -162,7 +178,7 @@ rm -rf ~/.claude/skills/skill-compass
 rm -rf ~/.agents/skills/skill-compass
 ```
 
-Plugin users run `/plugin uninstall skill-compass@skill-compass`.
+If you installed it into one project, delete `.claude/skills/skill-compass` or `.agents/skills/skill-compass` inside that project instead. Plugin users run `/plugin uninstall skill-compass@skill-compass`.
 
 ---
 
@@ -173,7 +189,7 @@ skill-compass/
 ├── skills/skill-compass/SKILL.md   the skill itself
 ├── .claude-plugin/                 Claude Code plugin and marketplace files
 ├── scripts/package.sh              builds the zip for Claude.ai
-├── install.sh                      one command installer
+├── install.sh                      copy-it-for-me script (no Node.js needed)
 ├── docs/examples.md                example sessions
 ├── CONTRIBUTING.md
 ├── CHANGELOG.md
@@ -183,6 +199,9 @@ skill-compass/
 ---
 
 ## FAQ
+
+**Why is the install `npx skills add` and not an npm package?**
+A skill is just a folder with a `SKILL.md` file. There is no code to build or publish, so there is nothing to put on npm. The open `skills` installer downloads the folder straight from GitHub and copies it into the right place for your agent. It needs Node.js only to run the installer. If you do not use Node.js, copy the folder by hand (see the install section).
 
 **Does it send my data anywhere?**
 No. It is plain instructions. It only reads the skill list and your project context that your agent already has.

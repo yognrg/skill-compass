@@ -4,6 +4,10 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 
 ## [Unreleased]
 
+### Changed
+* README install section rewritten around one command, `npx skills add yognrg/skill-compass`, with other methods in collapsible sections.
+* Added a FAQ entry explaining why there is no npm package.
+
 ## [1.0.0] 2026-10-27
 
 ### Added
