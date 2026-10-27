@@ -1,0 +1,13 @@
+{
+  "name": "skill-compass",
+  "version": "1.0.0",
+  "description": "Finds the right installed skills for your current task, shows a pick list, then runs the ones you choose.",
+  "author": {
+    "name": "Yog Urkundwar",
+    "url": "https://github.com/yognrg"
+  },
+  "homepage": "https://github.com/yognrg/skill-compass",
+  "repository": "https://github.com/yognrg/skill-compass",
+  "license": "MIT",
+  "keywords": ["skills", "skill-finder", "discovery", "productivity", "agent-skills"]
+}

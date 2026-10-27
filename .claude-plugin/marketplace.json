@@ -1,0 +1,16 @@
+{
+  "name": "skill-compass",
+  "owner": {
+    "name": "Yog Urkundwar",
+    "url": "https://github.com/yognrg"
+  },
+  "plugins": [
+    {
+      "name": "skill-compass",
+      "source": "./",
+      "description": "Finds the right installed skills for your current task, shows a pick list, then runs the ones you choose.",
+      "version": "1.0.0",
+      "category": "productivity"
+    }
+  ]
+}
