@@ -43,31 +43,65 @@ Treat each skill's description as its "when to use" rule. Match against that tex
 1. Score each candidate on three things: fit to the deliverable, fit to the domain, and fit to the action the user wants (write, analyze, review, design, and so on).
 2. Keep the strongest 3 to 8 matches. Drop weak matches rather than padding the list.
 3. Where two skills do the same job, keep the better fit and mention the other in one phrase.
-4. For each kept skill, prepare:
-   - The skill name exactly as listed.
-   - One short reason it fits this task.
-   - A flag if it needs something extra, such as a connector or tool that is not available.
-5. Plan the run order: research and data skills first, building and formatting skills next, review and polish skills last.
-6. If nothing fits, say so plainly, name the closest one or two options, and offer to continue without a skill. Never force a match.
+4. For each kept skill, prepare a plain language card with these parts:
+   - **Name:** the skill name exactly as listed.
+   - **Use it for:** the situation it helps with, in the user's own terms (for example "writing the headlines and button text").
+   - **You get:** the result the user will see (for example "a finished, mobile friendly page").
+   - **Pick this one if / skip it if:** only when it overlaps with another option or is easy to confuse with one. Say what makes them different.
+   - **Needs:** a flag if it requires a connector or tool that is not available.
+5. Write each card from the skill's real description. If the description is vague or the skill has a cryptic name, read the top of its `SKILL.md` before writing. Never invent abilities, and never paste the description word for word.
+6. Plan the run order: research and data skills first, building and formatting skills next, review and polish skills last.
+7. If nothing fits, say so plainly, name the closest one or two options, and offer to continue without a skill. Never force a match.
 
 ### Step 4: Show the pick list
+
+The goal is that the user can choose without opening anything or guessing what a skill does. Every option must answer three questions: what is it for, what will I get, and how is it different from the other options.
+
+**Writing the descriptions**
+
+- Start with the situation, then the result: "Use for X. You get Y."
+- Keep each popup description to one line, about 110 characters or fewer. Cut filler words first.
+- Use plain words. Replace jargon with what the user will notice ("checks text is readable and buttons work with a keyboard", not "WCAG audit").
+- When two options overlap, add the difference ("Pick this for the full page. The other only writes text.").
+- If the skill name is cryptic, the description carries the meaning.
 
 **If the agent has a multiple choice question tool** (for example AskUserQuestion in Claude, loading it first if it is deferred):
 
 - Turn on multiple selection so the user can tick several skills.
-- Use the skill name as each option label and the one line reason as its description.
+- The question text restates the goal and the run order in one sentence, for example: "For your fintech landing page, which skills should I use? They run in this order: copy, build, review."
+- Use the skill name as each option label. Use the "Use for X. You get Y." line as its description.
 - A call holds at most 4 questions with at most 4 options each. With more than 4 matches, group them by purpose ("Research and data", "Build", "Review and polish") and use one question per group.
 - Put the best fit first and add "(Recommended)" to its label.
 - The user can type their own answer, so do not add a catch all option. Submitting with nothing selected means skip.
 
-**If no question tool exists**, print a numbered list and ask the user to reply with the numbers they want, or "all", or "none":
+Example options:
 
 ```
-Skill Compass found these for your task:
+frontend-design (Recommended)
+  Use for the page layout, type and look. You get a finished responsive page.
+design:ux-copy
+  Use for headlines, buttons and short text. You get ready to paste wording.
+design:accessibility-review
+  Use after building. You get a list of readability and keyboard problems to fix.
+```
 
-1. frontend-design (Recommended): builds distinctive UI, fits your landing page
-2. brand-guidelines: applies your brand colors and type
-3. accessibility-review: checks contrast and keyboard use before handoff
+**If no question tool exists**, print a numbered list with a short card for each skill and ask the user to reply with the numbers they want, or "all", or "none":
+
+```
+Skill Compass found these for your landing page. They run in this order.
+
+1. design:ux-copy
+   Use it for: headlines, buttons and short text
+   You get: wording ready to paste into the page
+
+2. frontend-design (Recommended)
+   Use it for: the layout, type and visual style
+   You get: a finished, responsive page
+
+3. design:accessibility-review
+   Use it for: checking the page after it is built
+   You get: a list of readability and keyboard problems to fix
+   Skip it if: you only need a rough draft
 
 Reply with numbers (for example "1 3"), "all", or "none".
 ```

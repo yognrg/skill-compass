@@ -26,12 +26,14 @@ You stay in control. Nothing runs until you choose.
 You:   /skill-compass  I am building a landing page for a fintech app
 
 Compass finds:
-  1. frontend-design (Recommended)  distinctive UI, fits a landing page
-  2. brand-guidelines               applies your brand colors and type
-  3. accessibility-review           checks contrast and keyboard use
-  4. ux-copy                        writes headlines and button text
+  1. frontend-design (Recommended)
+     Use for the layout, type and look. You get a finished responsive page.
+  2. ux-copy
+     Use for headlines and buttons. You get wording ready to paste.
+  3. accessibility-review
+     Use after building. You get a list of readability and keyboard fixes.
 
-You pick 1, 3 and 4. Compass loads them in order and gets to work.
+You pick 1, 2 and 3. Compass runs them in a sensible order and gets to work.
 ```
 
 ---

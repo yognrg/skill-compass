@@ -5,6 +5,7 @@ All notable changes are listed here. The format follows [Keep a Changelog](https
 ## [Unreleased]
 
 ### Changed
+* Pick list options now explain what each skill is for, what you get, and how it differs from overlapping options, so choosing needs no guesswork.
 * README install section rewritten around one command, `npx skills add yognrg/skill-compass`, with other methods in collapsible sections.
 * Added a FAQ entry explaining why there is no npm package.
 

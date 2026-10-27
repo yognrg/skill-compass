@@ -10,9 +10,11 @@ Three sample sessions showing how Skill Compass behaves. Skill names depend on w
 
 **Pick list:**
 
-1. `xlsx` (Recommended): reads and checks the spreadsheet numbers
-2. `data-visualization`: turns the numbers into clear charts
-3. `pptx`: builds the deck
+1. `xlsx` (Recommended): Use for reading the spreadsheet. You get checked numbers to build on.
+2. `data-visualization`: Use for showing trends. You get clear charts for the slides.
+3. `pptx`: Use for assembling the deck. You get a finished presentation file.
+
+Each option says what it is for and what you will get, so you can choose without opening anything.
 
 **You pick:** all three.
 
